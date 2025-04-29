@@ -42,14 +42,36 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\ArtAssets\Scripts\ETFXRotation.cs" />
+     <Compile Include="Assets\ArtAssets\Scripts\ETFXLightFade.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Settings" />
+     <Folder Include="Assets\ArtAssets" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Demo\Textures" />
+     <None Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Core\Shaders\Skybox Cubemap Extended.shader" />
+     <Folder Include="Assets\ArtAssets\Materials" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Core\Shaders" />
+     <Folder Include="Assets\ArtAssets\Scenes" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Demo\Materials" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended" />
+     <Folder Include="Assets\_GameOne" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC" />
+     <Folder Include="Assets\ArtAssets\Particles" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Core" />
+     <Folder Include="Assets\ArtAssets\Scripts" />
      <Folder Include="Assets\TutorialInfo\Scripts" />
      <Folder Include="Assets\TutorialInfo\Icons" />
      <None Include="Assets\Resources\BillingMode.json" />
      <Folder Include="Assets\TutorialInfo" />
+     <Folder Include="Assets\ArtAssets\Textures" />
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\Resources" />
+     <Folder Include="Assets\ArtAssets\Skybox" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Demo" />
+     <Folder Include="Assets\ArtAssets\Animations" />
+     <Folder Include="Assets\ArtAssets\Prefabs" />
+     <Folder Include="Assets\ArtAssets\Models" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Program Files\UnityHub\Hub\Editor\2021.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

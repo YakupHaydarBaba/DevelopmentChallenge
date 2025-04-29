@@ -42,7 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+     <Compile Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Core\Editor\SkyboxExtendedWindows.cs" />
      <Folder Include="Assets\TutorialInfo\Scripts\Editor" />
+     <Folder Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Core\Editor" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Program Files\UnityHub\Hub\Editor\2021.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
