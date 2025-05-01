@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Grid : MonoBehaviour
 {
-    private Vector2 _gridPosition;
-    [SerializeField] private Material _highlightMaterial;
-    [SerializeField] private MeshRenderer _meshRenderer;
+    public Vector2Int gridPosition{ get; private set; }
+    [SerializeField] private GameObject markObject;
 
-    public void Init(Vector2 gridPosition)
+    public bool IsMarked { get; private set; }
+
+    public void Init(Vector2Int gridPosition)
     {
-        _gridPosition = gridPosition;
+        this.gridPosition = gridPosition;
     }
-
-    private void SetMaterial()
+    
+    public void SetMarked()
     {
+        this.IsMarked = true;
+        markObject.SetActive(IsMarked);
+    }
+    public void ResetMarked()
+    {
+        this.IsMarked = false;
+        markObject.SetActive(IsMarked);
     }
 }

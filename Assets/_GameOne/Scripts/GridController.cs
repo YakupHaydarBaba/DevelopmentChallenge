@@ -28,7 +28,8 @@ public class GridController : MonoBehaviour
         {
             for (int j = 0; j < GridSize; j++)
             {
-                var grid = Instantiate(Resources.Load("Grid"), new Vector3(i,  j,0), Quaternion.identity,_gridsParent);
+                var grid = Instantiate(Resources.Load<Grid>("Grid"), new Vector3(i,  j,0), Quaternion.identity,_gridsParent);
+                grid.Init(new Vector2Int(i,j));
                 _grids.Add(grid.GetComponent<Grid>());
             }
         } 
@@ -51,6 +52,52 @@ public class GridController : MonoBehaviour
         foreach (var grid in _grids)
         {
             Destroy(grid.gameObject);
+        }
+    }
+    
+    public void FindMarkedSequences()
+    {
+        HashSet<Grid> result = new HashSet<Grid>();
+
+        
+        var gridDict = _grids.ToDictionary(g => g.gridPosition);
+
+        
+        Vector2Int[] directions =
+        {
+            new Vector2Int(1, 0), 
+            new Vector2Int(0, 1), 
+            new Vector2Int(1, 1), 
+            new Vector2Int(1, -1),
+        };
+
+        foreach (var grid in _grids)
+        {
+            if (!grid.IsMarked) continue;
+
+            foreach (var dir in directions)
+            {
+                List<Grid> sequence = new List<Grid> { grid };
+
+                Vector2Int nextPos = grid.gridPosition + dir;
+
+                while (gridDict.TryGetValue(nextPos, out var nextGrid) && nextGrid.IsMarked)
+                {
+                    sequence.Add(nextGrid);
+                    nextPos += dir;
+                }
+
+                if (sequence.Count >= 3)
+                {
+                    foreach (var item in sequence)
+                        result.Add(item);
+                }
+            }
+        }
+
+        foreach (var grid in result)
+        {
+            grid.ResetMarked();
         }
     }
     
