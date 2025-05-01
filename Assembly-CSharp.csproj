@@ -41,11 +41,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\ArtAssets\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\ArtAssets\Scripts\ETFXLightFade.cs" />
-    <Compile Include="Assets\_GameOne\Scripts\GridController.cs" />
     <Compile Include="Assets\_GameOne\Scripts\Grid.cs" />
+    <Compile Include="Assets\_GameOne\Scripts\GridController.cs" />
+    <Compile Include="Assets\ArtAssets\Scripts\ETFXRotation.cs" />
+    <Compile Include="Assets\_GameOne\Scripts\InputController.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <None Include="Assets\ArtAssets\Skybox\BOXOPHOBIC\BOXOPHOBIC\Skybox Cubemap Extended\Core\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\Resources\BillingMode.json" />
     <Reference Include="UnityEngine">
@@ -729,6 +730,12 @@
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
       <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
     </Reference>
@@ -833,12 +840,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

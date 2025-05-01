@@ -775,6 +775,12 @@
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
       <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
     </Reference>
@@ -879,12 +885,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>D:\Project Files\Unity Projects\DeveloperChallenge\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
