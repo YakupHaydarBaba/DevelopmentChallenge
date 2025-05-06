@@ -27,10 +27,20 @@ public class Cube : MonoBehaviour
             {
                 yield return null;
                 transform.localPosition += Vector3.back * speed * Time.deltaTime;
+                if (transform.localPosition.z <= -10) speed = Mathf.Abs(speed) * -1;
+                if (transform.localPosition.z >= 0) speed = Mathf.Abs(speed);
             }
         }
     }
+
     public void StopMovement() => _isMoving = false;
 
     public void SetNewScale(Vector3 scale) => transform.localScale = scale;
+
+    public void GameOver()
+    {
+        _isMoving = false;
+        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+        rb.mass = 0.5f;
+    }
 }

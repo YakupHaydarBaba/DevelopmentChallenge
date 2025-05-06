@@ -64,8 +64,8 @@ public class TowerController : MonoBehaviour
             Vector3 newScale = CalculateCut(currentCube, previousCube);
             if (newScale == Vector3.zero)
             {
-                Debug.Log("Game Over!");
-                IsAlive = false;
+                GameOver();
+                
                 return;
             }
 
@@ -162,5 +162,12 @@ public class TowerController : MonoBehaviour
         rb.mass = 0.5f;
 
         Destroy(overhangCube.gameObject, 3f);
+    }
+
+    private void GameOver()
+    {
+        IsAlive = false;
+        uiController.GameOver();
+        currentCube.GameOver();
     }
 }
