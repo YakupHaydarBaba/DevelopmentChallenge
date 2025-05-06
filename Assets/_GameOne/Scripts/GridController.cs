@@ -3,46 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
+
 [ExecuteInEditMode]
 public class GridController : MonoBehaviour
 {
     public int GridSize;
     public CinemachineTargetGroup targetGroup;
-    
-    [SerializeField]private Transform _gridsParent;
+
+    [SerializeField] private Transform _gridsParent;
 
     private List<Grid> _grids = new();
 
     private void Start()
     {
-        CreateNewGrid(); 
+        CreateNewGrid();
     }
 
-    private void Update()
-    {
-        if (!Application.isPlaying && Input.GetKeyDown(KeyCode.C))
-        {
-           CreateNewGrid();
-        }
-    }
-    
 
+    [Button]
     private void CreateNewGrid()
     {
         ClearGrids();
-        
+
         for (int i = 0; i < GridSize; i++)
         {
             for (int j = 0; j < GridSize; j++)
             {
-                var grid = Instantiate(Resources.Load<Grid>("Grid"), new Vector3(i,  j,0), Quaternion.identity,_gridsParent);
-                grid.Init(new Vector2Int(i,j));
+                var grid = Instantiate(Resources.Load<Grid>("Grid"), new Vector3(i, j, 0), Quaternion.identity,
+                    _gridsParent);
+                grid.Init(new Vector2Int(i, j));
                 _grids.Add(grid.GetComponent<Grid>());
             }
-        } 
-        
+        }
+
         var transforms = _grids.Select(x => x.transform).ToList();
         var targets = new CinemachineTargetGroup.Target[transforms.Count];
 
@@ -58,25 +54,36 @@ public class GridController : MonoBehaviour
 
     private void ClearGrids()
     {
+        if (!Application.isPlaying)
+        {
+            foreach (var grid in _grids)
+            {
+                DestroyImmediate(grid.gameObject);
+            }
+            _grids.Clear();
+            return;
+        }
         foreach (var grid in _grids)
         {
             Destroy(grid.gameObject);
         }
+        _grids.Clear();
+
     }
-    
+
     public void FindMarkedSequences()
     {
         HashSet<Grid> result = new HashSet<Grid>();
 
-        
+
         var gridDict = _grids.ToDictionary(g => g.gridPosition);
 
-        
+
         Vector2Int[] directions =
         {
-            new Vector2Int(1, 0), 
-            new Vector2Int(0, 1), 
-            new Vector2Int(1, 1), 
+            new Vector2Int(1, 0),
+            new Vector2Int(0, 1),
+            new Vector2Int(1, 1),
             new Vector2Int(1, -1),
         };
 
@@ -109,5 +116,4 @@ public class GridController : MonoBehaviour
             grid.ResetMarked();
         }
     }
-    
 }

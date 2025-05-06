@@ -42,16 +42,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\ArtAssets\Scripts\ETFXLightFade.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\Cube.cs" />
     <Compile Include="Assets\_GameOne\Scripts\Grid.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\InputHandler.cs" />
     <Compile Include="Assets\_GameOne\Scripts\GridController.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\TowerController.cs" />
     <Compile Include="Assets\ArtAssets\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\_GameOne\Scripts\InputController.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\_GameTwo\Scripts\Cube.cs" />
-    <Compile Include="Assets\_GameTwo\Scripts\TowerController.cs" />
     <Compile Include="Assets\_GameTwo\Scripts\UıController.cs" />
-    <Compile Include="Assets\_GameTwo\Scripts\InputHandler.cs" />
-    <Compile Include="Assets\_GameOne\Scripts\EditorButton.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
