@@ -47,11 +47,11 @@
     <Compile Include="Assets\ArtAssets\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\_GameOne\Scripts\InputController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\GameTwo\Scripts\Cube.cs" />
-    <Compile Include="Assets\GameTwo\Scripts\CubeCreator.cs" />
-    <Compile Include="Assets\GameTwo\Scripts\TowerController.cs" />
-    <Compile Include="Assets\GameTwo\Scripts\UıController.cs" />
-    <Compile Include="Assets\GameTwo\Scripts\InputHandler.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\Cube.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\TowerController.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\UıController.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\InputHandler.cs" />
+    <Compile Include="Assets\_GameOne\Scripts\EditorButton.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -69,6 +69,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Resources\BillingMode.json" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\NaughtyAttributes\package.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -870,6 +871,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NaughtyAttributes.Editor.csproj">
+      <Project>{9d6bbeff-f3f9-4ed0-876b-1531e11c471e}</Project>
+      <Name>NaughtyAttributes.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NaughtyAttributes.Test.csproj">
+      <Project>{d86c8397-3b84-410f-77ae-6ae17395cde4}</Project>
+      <Name>NaughtyAttributes.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="NaughtyAttributes.Core.csproj">
+      <Project>{34b9c3f0-aba3-f622-1000-255332857563}</Project>
+      <Name>NaughtyAttributes.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

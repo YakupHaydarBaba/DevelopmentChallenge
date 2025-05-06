@@ -892,6 +892,18 @@
       <Project>{532d5643-9daa-cb01-99b4-0e7c3268819b}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="NaughtyAttributes.Editor.csproj">
+      <Project>{9d6bbeff-f3f9-4ed0-876b-1531e11c471e}</Project>
+      <Name>NaughtyAttributes.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NaughtyAttributes.Test.csproj">
+      <Project>{d86c8397-3b84-410f-77ae-6ae17395cde4}</Project>
+      <Name>NaughtyAttributes.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="NaughtyAttributes.Core.csproj">
+      <Project>{34b9c3f0-aba3-f622-1000-255332857563}</Project>
+      <Name>NaughtyAttributes.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

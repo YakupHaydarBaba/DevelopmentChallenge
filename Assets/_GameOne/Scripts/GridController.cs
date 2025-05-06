@@ -5,7 +5,7 @@ using System.Linq;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
-
+[ExecuteInEditMode]
 public class GridController : MonoBehaviour
 {
     public int GridSize;
@@ -20,7 +20,16 @@ public class GridController : MonoBehaviour
         CreateNewGrid(); 
     }
 
-    public void CreateNewGrid()
+    private void Update()
+    {
+        if (!Application.isPlaying && Input.GetKeyDown(KeyCode.C))
+        {
+           CreateNewGrid();
+        }
+    }
+    
+
+    private void CreateNewGrid()
     {
         ClearGrids();
         
