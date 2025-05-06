@@ -21,6 +21,7 @@ public class Cube : MonoBehaviour
 
         IEnumerator MovementCR()
         {
+            yield return new WaitForSeconds(.5f);
             _isMoving = true;
             while (_isMoving)
             {
@@ -30,4 +31,6 @@ public class Cube : MonoBehaviour
         }
     }
     public void StopMovement() => _isMoving = false;
+
+    public void SetNewScale(Vector3 scale) => transform.localScale = scale;
 }

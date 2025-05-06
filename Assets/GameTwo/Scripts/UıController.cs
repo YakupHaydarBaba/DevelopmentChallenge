@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UıController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] TMP_Text scoreText;
 
-    // Update is called once per frame
-    void Update()
+    public void SetScore(int score)
     {
-        
+        scoreText.text = $"Score: {score}";
     }
 }
