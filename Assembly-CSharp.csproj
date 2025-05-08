@@ -45,8 +45,8 @@
     <Compile Include="Assets\_GameTwo\Scripts\Cube.cs" />
     <Compile Include="Assets\_GameOne\Scripts\Grid.cs" />
     <Compile Include="Assets\_GameTwo\Scripts\InputHandler.cs" />
+    <Compile Include="Assets\_GameTwo\Scripts\BridgeController.cs" />
     <Compile Include="Assets\_GameOne\Scripts\GridController.cs" />
-    <Compile Include="Assets\_GameTwo\Scripts\TowerController.cs" />
     <Compile Include="Assets\ArtAssets\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\_GameOne\Scripts\InputController.cs" />
     <Compile Include="Assets\_GameTwo\Scripts\UıController.cs" />

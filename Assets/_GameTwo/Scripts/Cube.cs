@@ -7,6 +7,8 @@ public class Cube : MonoBehaviour
     [SerializeField] private MeshRenderer _renderer;
     [SerializeField] private float speed;
     private bool _isMoving;
+    private Coroutine MoveCR;
+    
 
     public void Init(Vector3 cubeScale, Color color, bool move = false)
     {
@@ -17,26 +19,25 @@ public class Cube : MonoBehaviour
 
     private void StartMovement()
     {
-        StartCoroutine(MovementCR());
+        MoveCR =StartCoroutine(MovementCR());
 
         IEnumerator MovementCR()
         {
+            var direction = new Vector3(-transform.position.x, 0, 0).normalized;
             yield return new WaitForSeconds(.5f);
             _isMoving = true;
             while (_isMoving)
             {
                 yield return null;
-                transform.localPosition += Vector3.back * speed * Time.deltaTime;
-                if (transform.localPosition.z <= -10) speed = Mathf.Abs(speed) * -1;
-                if (transform.localPosition.z >= 0) speed = Mathf.Abs(speed);
+                transform.localPosition +=  direction * speed * Time.deltaTime;
+               
             }
         }
     }
 
-    public void StopMovement() => _isMoving = false;
+    public void StopMovement() => StopCoroutine(MoveCR);
 
-    public void SetNewScale(Vector3 scale) => transform.localScale = scale;
-
+ 
     public void GameOver()
     {
         _isMoving = false;

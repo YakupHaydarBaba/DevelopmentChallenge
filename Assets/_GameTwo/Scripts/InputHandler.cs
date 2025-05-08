@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public TowerController towerController;
+    public BridgeController towerController;
 
     private void Update()
     {
