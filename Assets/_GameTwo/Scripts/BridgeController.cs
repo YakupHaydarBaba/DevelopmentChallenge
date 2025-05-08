@@ -6,18 +6,26 @@ using Random = UnityEngine.Random;
 
 public class BridgeController : MonoBehaviour
 {
-
     [SerializeField] private UıController uiController;
+    [SerializeField] private GameObject finishLine;
     [SerializeField] private float perfectTolerance = 0.1f;
+    public int GoalAmount = 10;
+    public Cube previousCube;
+    public bool IsAlive = true;
 
     private Cube currentCube;
-    [SerializeField] private Cube previousCube;
     private int cubeCount = 0;
-    public bool IsAlive = true;
+    private Coroutine passCheckCR;
 
     private void Start()
     {
+        SetFinishLine();
         TowerLifeCycle();
+    }
+
+    private void SetFinishLine()
+    {
+        finishLine.transform.position = new Vector3(0, 0, GoalAmount * 4f);
     }
 
     private void TowerLifeCycle()
@@ -26,10 +34,9 @@ public class BridgeController : MonoBehaviour
 
         IEnumerator LifeCycleCR()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.5f);
             while (IsAlive)
             {
-                
                 yield return new WaitUntil(() => currentCube == null);
 
                 var spawnPoint = previousCube.transform.position +
@@ -40,6 +47,30 @@ public class BridgeController : MonoBehaviour
                 var scale = previousCube ? previousCube.transform.localScale : new Vector3(4, 0.5f, 4);
                 currentCube.Init(scale, Random.ColorHSV(), true);
                 cubeCount++;
+                PassCheck();
+
+                if (cubeCount >= GoalAmount) yield break;
+            }
+        }
+    }
+
+    private void PassCheck()
+    {
+        passCheckCR = StartCoroutine(PassCheckCR());
+
+        IEnumerator PassCheckCR()
+        {
+            yield return new WaitUntil(() =>
+                (Mathf.Abs(currentCube.transform.position.x - previousCube.transform.position.x) <
+                 previousCube.transform.localScale.x ));
+            while (true)
+            {
+                yield return null;
+                if (Mathf.Abs(currentCube.transform.position.x - previousCube.transform.position.x) >
+                    previousCube.transform.localScale.x)
+                {
+                    GameOver();
+                }
             }
         }
     }
@@ -49,7 +80,10 @@ public class BridgeController : MonoBehaviour
         if (!IsAlive || currentCube == null) return;
 
         currentCube.StopMovement();
-
+        if (passCheckCR != null)
+        {
+            StopCoroutine(passCheckCR);
+        }
 
         if (previousCube != null)
         {
@@ -59,16 +93,16 @@ public class BridgeController : MonoBehaviour
             if (Mathf.Abs(currentCube.transform.position.x - previousCube.transform.position.x) > perfectTolerance)
             {
                 newScale = CalculateCut(currentCube, previousCube);
-                
+
                 if (newScale == Vector3.zero)
                 {
                     GameOver();
-                
+
                     return;
                 }
-                currentCube.transform.localScale = newScale;
-                SpawnFallingOverhang(currentCube, previousCube );
 
+                currentCube.transform.localScale = newScale;
+                SpawnFallingOverhang(currentCube, previousCube);
             }
             else
             {
@@ -81,8 +115,9 @@ public class BridgeController : MonoBehaviour
 
         previousCube = currentCube;
         currentCube = null;
-        uiController.SetScore(cubeCount);
+        uiController.SetScore(cubeCount, GoalAmount);
     }
+
 
     private Vector3 CalculateCut(Cube current, Cube previous)
     {
@@ -93,18 +128,19 @@ public class BridgeController : MonoBehaviour
 
         if (Mathf.Abs(delta) <= perfectTolerance)
         {
-            current.transform.position = new Vector3(previous.transform.position.x, current.transform.position.y, current.transform.position.z);
-            
+            current.transform.position = new Vector3(previous.transform.position.x, current.transform.position.y,
+                current.transform.position.z);
+
             return current.transform.localScale;
         }
 
         float maxSize = previous.transform.localScale.x;
-        float newSize = Mathf.Max(0f, maxSize - Mathf.Abs(delta)); 
+        float newSize = Mathf.Max(0f, maxSize - Mathf.Abs(delta));
 
-        if (newSize <= 0f) 
+        if (newSize <= 0f)
         {
             Debug.Log("Game Over! Missed the stack completely.");
-            return Vector3.zero; 
+            return Vector3.zero;
         }
 
         newScale.x = newSize;
@@ -118,16 +154,15 @@ public class BridgeController : MonoBehaviour
     }
 
 
-
     private void SpawnFallingOverhang(Cube current, Cube previous)
     {
         Vector3 cutPosition = current.transform.position;
         Vector3 cutScale = current.transform.localScale;
 
-        float 
+        float
             delta = current.transform.position.x - previous.transform.position.x;
         float overhangSize = previous.transform.localScale.x - cutScale.x;
-        
+
 
         Vector3 overhangPosition;
         if (delta > 0)
@@ -152,9 +187,15 @@ public class BridgeController : MonoBehaviour
         Destroy(overhangCube.gameObject, 3f);
     }
 
+    public void GameWin()
+    {
+        IsAlive = false;
+        uiController.GameWin();
+    }
 
     private void GameOver()
     {
+        if (!IsAlive)return;
         IsAlive = false;
         uiController.GameOver();
         currentCube.GameOver();
